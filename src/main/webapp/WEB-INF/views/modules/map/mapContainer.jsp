@@ -1,0 +1,72 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ include file="/WEB-INF/views/include/taglib.jsp"%>
+<html>
+<head>
+<meta name="decorator" content="default"/>
+<title>Insert title here</title>
+<script src="${ctxStatic}/supermap/libs/SuperMap.Include.js" type="text/javascript"></script>
+<script src="${ctxStatic}/supermap/MapConfig.js" type="text/javascript"></script>
+<script src="${ctxStatic}/supermap/MapContainer.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="${ctxStatic}/easyui/themes/gray/easyui.css">
+<link rel="stylesheet" type="text/css" href="${ctxStatic}/easyui/themes/icon.css">
+<script src="${ctxStatic}/easyui/jquery.easyui.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<!-- <div id="searchWin" class="easyui-window" title="企业查询" data-options="iconCls:'icon-save',minimizable:false,maximizable:false,top:5,left:100,cache:false"
+         style="width:350px;height:200px;padding:0;">
+        <div class="easyui-tabs" style="width:100%;height:100%;padding:0;margin: 0;">
+			<div title="企业查询" style="padding:10px">
+				<p style="font-size:14px">jQuery EasyUI framework helps you build your web pages easily.</p>
+				<ul>
+					<li>easyui is a collection of user-interface plugin based on jQuery.</li>
+					<li>easyui provides essential functionality for building modem, interactive, javascript applications.</li>
+					<li>using easyui you don't need to write many javascript code, you usually defines user-interface by writing some HTML markup.</li>
+					<li>complete framework for HTML5 web page.</li>
+					<li>easyui save your time and scales while developing your products.</li>
+					<li>easyui is very easy but powerful.</li>
+				</ul>
+			</div>
+			<div title="综合查询" data-options="iconCls:'icon-help',closable:true" style="padding:10px">
+				This is the help content.
+			</div>
+		</div>
+    </div> -->
+    <div id="mapDiv" style="position:absolute; width:100%; height:100%; margin: 0; padding: 0; border: 0px;">
+    </div>
+    <div id="searchWin" class="easyui-tabs" data-options="tools:'#tab-tools'" style="width:350px; height:250px; position:absolute;z-index: 100; left: 100px; top: 0px;">
+		<div title="企业查询" style="padding:10px">
+			企业查询
+		</div>
+		<div title="综合查询" style="padding:10px">
+			综合查询
+		</div>
+	</div>
+	<div id="tab-tools">
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-collapse'" onclick="onExpand()"></a>
+	</div>
+    <div class="easyui-panel" style="padding:5px; position:absolute;z-index: 100; right: 10px; top: 0px; width: 300px;">
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-marker'">标记</a>
+		<a href="#" class="easyui-menubutton" data-options="menu:'#mm1',iconCls:'icon-measure'">测量</a>
+		<a href="#" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-switch'">地图切换</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-trash'">清除</a>
+	</div>
+	<div id="mm1" style="width:100px;">
+		<div data-options="iconCls:'icon-distance'">测距</div>
+		<div data-options="iconCls:'icon-area'">侧面</div>
+	</div>
+	<div id="mm2" style="width:100px;">
+		<div data-options="iconCls:'icon-2D'">二维地图</div>
+		<div data-options="iconCls:'icon-3D'">影像图</div>
+	</div>
+    <script type="text/javascript">
+    var contextPath = "${ctxStatic}"; 
+    function onExpand() {
+    	if ($("#searchWin").height() == 30) {
+    		$("#searchWin").height(250);
+    	} else {
+    		$("#searchWin").css("height", "30px");
+    	}
+    }
+    </script>
+</body>
+</html>
