@@ -32,10 +32,10 @@
 			</div>
 		</div>
     </div> -->
-    <div id="mapDiv" style="position:absolute; width:100%; height:100%; margin: 0; padding: 0; border: 0px;">
+    <div id="mapDiv" style="position:absolute; width:100%; height:100%; margin: 0; padding: 0; border: 0px;display:none">
     </div>
     <div id="sw">
-    	<img alt="三维" src="">
+    	<img alt="" src="${ctxStatic}/images/sw1.png">
     </div>
     <div id="searchWin" class="easyui-tabs" data-options="tools:'#tab-tools'" style="width:350px; height:150px; position:absolute;z-index: 100; left: 100px; top: 0px;">
 		<div title="企业查询" style="padding:10px;text-align:center" >
