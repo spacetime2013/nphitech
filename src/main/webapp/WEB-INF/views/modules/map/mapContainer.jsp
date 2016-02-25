@@ -66,9 +66,9 @@
 		<div data-options="iconCls:'icon-area'">侧面</div>
 	</div>
 	<div id="mm2" style="width:100px;" data-options="onClick:changemap">
-		<div id="sl">二维地图</div>
-		<div id="yx">影像地图</div>
-		<div id="rp">三维地图</div>
+		<div id="sl" data-options="iconCls:'icon-2D'">二维地图</div>
+		<div id="yx" data-options="iconCls:'icon-graphic'">影像地图</div>
+		<div id="rp" data-options="iconCls:'icon-3D'">三维地图</div>
 	</div>
     <script type="text/javascript">
     var contextPath = "${ctxStatic}"; 
