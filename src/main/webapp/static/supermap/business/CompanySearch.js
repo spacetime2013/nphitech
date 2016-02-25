@@ -98,8 +98,8 @@ var markerLayer;
         // alert(event.object.sm_capital);
         var marker = event.object;
         var lonlat = marker.getLonLat();
-        var contentHTML = "<div style='font-size:.8em; opacity: 0.8; overflow-y:hidden;'>";
-        contentHTML += "<div>"+marker.qname+"</div></div>";
+        var contentHTML = "<div style='font-size:1em; opacity: 0.8; overflow-y:hidden;'>";
+        contentHTML += "<div>企业名称："+marker.qname+"</div></div>";
         var size = new SuperMap.Size(0, 33);
         var icon = new SuperMap.Icon("./theme/images/marker.png", size, null);
         var popup = new SuperMap.Popup.FramedCloud("popwin",

@@ -17,7 +17,7 @@ $(document).ready(function() {
 	var baseLayer = new SuperMap.Layer.TiledDynamicRESTLayer(SuperMap.MapConfig.LayerNames.baseLayer, SuperMap.MapConfig.MapServer.baseLayerServer, {transparent: true, cacheEnabled: true}, {maxResolution:"auto"});
 	baseLayer.events.on({"layerInitialized": function(layer) {
 		map.addLayer(layer);
-//		map.setCenter(new SuperMap.LonLat(113.5715774, 22.2737075), 0);
-		map.zoomToMaxExtent();
+		map.setCenter(new SuperMap.LonLat(113.53818, 22.26929), 4);
+		//map.zoomToMaxExtent();
 	}});
 });
