@@ -37,28 +37,29 @@
     <div id="sw" style="display:none">
     	<img alt="" src="${ctxStatic}/images/sw1.png">
     </div>
-    <div id="searchWin" class="easyui-tabs" data-options="tools:'#tab-tools'" style="width:350px; height:150px; position:absolute;z-index: 100; left: 100px; top: 0px;">
+    <div id="searchWin" class="easyui-tabs" data-options="tools:'#tab-tools'" style="width:350px; height:auto; position:absolute;z-index: 100; left: 100px; top: 0px;">
 		<div title="企业查询" style="padding:10px;text-align:center" >
 			企业名称：<input type="text" id="qname" width="20px">&nbsp;&nbsp;
-			<input type="button" value="搜索" onclick="querybysql()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="button" value="取消">
+			<input class="btn btn-primary" type="button" value="搜索" onclick="querybysql()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input class="btn btn-primary" type="button" value="取消">
 		</div>
 		<div title="综合查询" style="padding:10px;text-align:center">
 			企业名称：<input type="text" id="qname" width="20px"><br>
 			企业地址：<input type="text" id="qname" width="20px"><br>
 			经营范围：<input type="text" id="qname" width="20px"><br>
 			产&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;值：<input type="text" id="qname" width="20px"><br>
-			<input type="button" value="搜索">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="button" value="取消">
+			<input class="btn btn-primary" type="button" value="搜索">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input class="btn btn-primary" type="button" value="取消">
 		</div>
 	</div>
 	<div id="tab-tools">
 		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-collapse'" onclick="onExpand()"></a>
 	</div>
-    <div class="easyui-panel" style="padding:5px; position:absolute;z-index: 100; right: 10px; top: 0px; width: 250px;">
+    <div class="easyui-panel" style="padding:5px; position:absolute;z-index: 100; right: 10px; top: 0px; width: 300px;">
 		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-marker'">标记</a>
 		<a href="#" class="easyui-menubutton" data-options="menu:'#mm1',iconCls:'icon-measure'">测量</a>
-		<a href="#" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-reload'">地图切换</a>
+		<a href="#" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-switch'">地图切换</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-trash'">清除</a>
 	</div>
 	<div id="mm1" style="width:100px;">
 		<div data-options="iconCls:'icon-distance'">测距</div>
