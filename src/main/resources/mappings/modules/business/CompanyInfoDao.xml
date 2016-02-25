@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.business.dao.CompanyInfoDao">
+    
+	<sql id="companyInfoColumns">
+		a.qid AS "qid",
+		a.qname AS "qname",
+		a.qaddress AS "qaddress",
+		a.qscope AS "qscope",
+		a.product AS "product",
+		a.tel AS "tel",
+		a.qgm AS "qgm",
+		a.people AS "people",
+		a.area AS "area",
+		a.cytype AS "cytype",
+		a.picture AS "picture",
+		a.lon AS "lon",
+		a.lat AS "lat"
+	</sql>
+	
+	<sql id="companyInfoJoins">
+	</sql>
+    
+	<select id="get" resultType="CompanyInfo">
+		SELECT 
+			<include refid="companyInfoColumns"/>
+		FROM sys_companyinfo a
+		<include refid="companyInfoJoins"/>
+		WHERE a.qid = #{id}
+	</select>
+	
+	<select id="findList" resultType="CompanyInfo">
+		SELECT 
+			<include refid="companyInfoColumns"/>
+		FROM sys_companyinfo a
+		<include refid="companyInfoJoins"/>
+		<where>
+			
+			<if test="qname != null and qname != ''">
+				AND a.qname LIKE 
+					<if test="dbName == 'oracle'">'%'||#{qname}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{qname}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{qname},'%')</if>
+			</if>
+			<if test="qaddress != null and qaddress != ''">
+				AND a.qaddress LIKE 
+					<if test="dbName == 'oracle'">'%'||#{qaddress}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{qaddress}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{qaddress},'%')</if>
+			</if>
+			<if test="qscope != null and qscope != ''">
+				AND a.qscope = #{qscope}
+			</if>
+			<if test="product != null and product != ''">
+				AND a.product = #{product}
+			</if>
+			<if test="qgm != null and qgm != ''">
+				AND a.qgm = #{qgm}
+			</if>
+			<if test="people != null and people != ''">
+				AND a.people = #{people}
+			</if>
+			<if test="area != null and area != ''">
+				AND a.area = #{area}
+			</if>
+			<if test="cytype != null and cytype != ''">
+				AND a.cytype = #{cytype}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="CompanyInfo">
+		SELECT 
+			<include refid="companyInfoColumns"/>
+		FROM sys_companyinfo a
+		<include refid="companyInfoJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO sys_companyinfo(
+			qname,
+			qaddress,
+			qscope,
+			product,
+			tel,
+			qgm,
+			people,
+			area,
+			cytype,
+			picture,
+			lon,
+			lat
+		) VALUES (
+			#{qname},
+			#{qaddress},
+			#{qscope},
+			#{product},
+			#{tel},
+			#{qgm},
+			#{people},
+			#{area},
+			#{cytype},
+			#{picture},
+			#{lon},
+			#{lat}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sys_companyinfo SET 	
+			qname = #{qname},
+			qaddress = #{qaddress},
+			qscope = #{qscope},
+			product = #{product},
+			tel = #{tel},
+			qgm = #{qgm},
+			people = #{people},
+			area = #{area},
+			cytype = #{cytype},
+			picture = #{picture},
+			lon = #{lon},
+			lat = #{lat}
+		WHERE qid = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM sys_companyinfo
+		WHERE qid = #{id}
+	</update>
+	
+</mapper>
