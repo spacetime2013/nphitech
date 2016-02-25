@@ -32,9 +32,9 @@
 			</div>
 		</div>
     </div> -->
-    <div id="mapDiv" style="position:absolute; width:100%; height:100%; margin: 0; padding: 0; border: 0px;display:none">
+    <div id="mapDiv" style="position:absolute; width:100%; height:100%; margin: 0; padding: 0; border: 0px;display:block">
     </div>
-    <div id="sw">
+    <div id="sw" style="display:none">
     	<img alt="" src="${ctxStatic}/images/sw1.png">
     </div>
     <div id="searchWin" class="easyui-tabs" data-options="tools:'#tab-tools'" style="width:350px; height:150px; position:absolute;z-index: 100; left: 100px; top: 0px;">
@@ -64,7 +64,7 @@
 		<div data-options="iconCls:'icon-distance'">测距</div>
 		<div data-options="iconCls:'icon-area'">侧面</div>
 	</div>
-	<div id="mm2" style="width:100px;">
+	<div id="mm2" style="width:100px;" data-options="onClick:changemap">
 		<div>二维地图</div>
 		<div>影像地图</div>
 		<div>三维地图</div>
@@ -80,6 +80,10 @@
     }
     function querybysql(){
     	queryBySQL();
+    }
+    function changemap(){
+    	$("#mapDiv").style.display = 'none';
+    	$("#sw").style.display = 'block';
     }
     </script>
 </body>
