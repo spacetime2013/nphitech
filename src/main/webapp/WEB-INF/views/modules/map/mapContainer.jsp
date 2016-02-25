@@ -74,7 +74,7 @@
     var contextPath = "${ctxStatic}"; 
     function onExpand() {
     	if ($("#searchWin").height() == 30) {
-    		$("#searchWin").height(150);
+    		$("#searchWin").css("height", "auto");
     	} else {
     		$("#searchWin").css("height", "30px");
     	}
