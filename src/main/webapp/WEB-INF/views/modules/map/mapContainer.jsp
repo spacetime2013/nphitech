@@ -65,9 +65,9 @@
 		<div data-options="iconCls:'icon-area'">侧面</div>
 	</div>
 	<div id="mm2" style="width:100px;" data-options="onClick:changemap">
-		<div>二维地图</div>
-		<div>影像地图</div>
-		<div>三维地图</div>
+		<div id="sl">二维地图</div>
+		<div id="yx">影像地图</div>
+		<div id="rp">三维地图</div>
 	</div>
     <script type="text/javascript">
     var contextPath = "${ctxStatic}"; 
@@ -81,9 +81,15 @@
     function querybysql(){
     	queryBySQL();
     }
-    function changemap(){
-    	$("#mapDiv").style.display = 'none';
-    	$("#sw").style.display = 'block';
+    function changemap(e){
+    console.log(e);
+       if(e.id=='rp'){
+	    $("#mapDiv").css('display','none'); 
+	    $("#sw").css('display','block'); 
+	   }else if(e.id=='sl'){
+	   	 $("#mapDiv").css('display','block'); 
+	     $("#sw").css('display','none'); 
+	   }
     }
     </script>
 </body>
