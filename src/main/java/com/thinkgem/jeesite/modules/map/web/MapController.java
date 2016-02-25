@@ -87,13 +87,36 @@ public class MapController extends BaseController {
 	 */
 	@RequestMapping(value = "${adminPath}/map/panorama")
 	public String panoramaIndex(HttpServletRequest request, HttpServletResponse response){
-		System.out.println("###############地图统计");
+		System.out.println("###############全景图");
 		return "modules/map/panorama";
 	}
 	
 	@RequestMapping(value = "${adminPath}/map/introduct")
 	public String introductIndex(HttpServletRequest request, HttpServletResponse response){
-		System.out.println("###############地图统计");
+		System.out.println("###############园区介绍");
 		return "modules/map/introduct";
+	}
+	
+	/**
+	 * 柱状图
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value = "${adminPath}/map/barAnaly")
+	public String barIndex(HttpServletRequest request, HttpServletResponse response){
+		System.out.println("###############柱状图");
+		return "modules/map/barAnaly";
+	}
+	/**
+	 * 饼状图
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value = "${adminPath}/map/pieAnaly")
+	public String pieIndex(HttpServletRequest request, HttpServletResponse response){
+		System.out.println("###############柱状图");
+		return "modules/map/pieAnaly";
 	}
 }

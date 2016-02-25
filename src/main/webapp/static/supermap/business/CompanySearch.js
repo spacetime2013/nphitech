@@ -1,3 +1,4 @@
+var ctxstatic="${ctxStatic}";
 var markerLayer;
 /**
      * 查询
@@ -31,16 +32,57 @@ var markerLayer;
                 if (result.recordsets[i].features) {
                     for (j=0; j<result.recordsets[i].features.length; j++) {
                         feature = result.recordsets[i].features[j];
-                        var point = feature.geometry,
-                                size = new SuperMap.Size(32, 32),
-                                icon = new SuperMap.Icon("../../../nphitech/static/images/tddown.png", size, null);
-                        marker = new SuperMap.Marker(new SuperMap.LonLat(point.x, point.y), icon);
-                        marker.qname = feature.attributes.Name;
-                        marker.events.on({
-                            "click":openInfoWin,
-                            "scope": marker
-                        });
-                        markerLayer.addMarker(marker);
+                        var num =parseInt(feature.attributes.SmID);
+                        if(num<15){
+	                        var point = feature.geometry,
+	                                size = new SuperMap.Size(32, 32),
+	                                icon = new SuperMap.Icon("../../../nphitech/static/images/tddown.png", size, null);
+	                        marker = new SuperMap.Marker(new SuperMap.LonLat(point.x, point.y), icon);
+	                        marker.qname = feature.attributes.Name;
+	                        marker.events.on({
+	                            "click":openInfoWin,
+	                            "scope": marker
+	                        });
+	                        markerLayer.addMarker(marker);
+                        }
+                        if(15<num&&num<25){
+	                        var point = feature.geometry,
+	                                size = new SuperMap.Size(32, 32),
+	                                icon = new SuperMap.Icon("../../../nphitech/static/images/m1.png", size, null);
+	                        marker = new SuperMap.Marker(new SuperMap.LonLat(point.x, point.y), icon);
+	                        marker.qname = feature.attributes.Name;
+	                        marker.events.on({
+	                            "click":openInfoWin,
+	                            "scope": marker
+	                        });
+	                        
+	                        markerLayer.addMarker(marker);
+                        }
+                       if(25<num&&num<35){
+	                        var point = feature.geometry,
+	                                size = new SuperMap.Size(32, 32),
+	                                icon = new SuperMap.Icon("../../../nphitech/static/images/m2.png", size, null);
+	                        marker = new SuperMap.Marker(new SuperMap.LonLat(point.x, point.y), icon);
+	                        marker.qname = feature.attributes.Name;
+	                        marker.events.on({
+	                            "click":openInfoWin,
+	                            "scope": marker
+	                        });
+	                        markerLayer.addMarker(marker);
+                        }
+                        if(34<num&&num<50){
+	                        var point = feature.geometry,
+	                                size = new SuperMap.Size(32, 32),
+	                                icon = new SuperMap.Icon("../../../nphitech/static/images/m3.png", size, null);
+	                        marker = new SuperMap.Marker(new SuperMap.LonLat(point.x, point.y), icon);
+	                        marker.qname = feature.attributes.Name;
+	                        marker.events.on({
+	                            "click":openInfoWin,
+	                            "scope": marker
+	                        });
+	                        markerLayer.addMarker(marker);
+                        }
+                       // markerLayer.addMarker(marker);
                     }
                 }
             }
