@@ -83,6 +83,15 @@ SuperMap.Lang.en = {
     'mi': "mi",
     'km': "km",
     'm': "m",
-    'ft': "ft"
+    'ft': "ft",
+
+    //VectorMapEditor
+    'editorName':"VectorMapEditor",
+    'layerList':"LayerList",
+    'point':"PointLayer",
+    'line':"LineLayer",
+    'region':"PolygonLayer",
+    'text':"TextLayer",
+    'advanceSetting':"advanceSetting"
     
 };

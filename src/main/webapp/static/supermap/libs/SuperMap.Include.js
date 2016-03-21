@@ -36,7 +36,7 @@
     }
     //加载类库资源文件
     function loadSMLibs() {
-        inputScript(baseurl+'SuperMap-7.1-11828.js');
+        inputScript(baseurl+'SuperMap-8.0.0-13011.js');
         inputCSS('style.css');
         inputCSS('google.css');
     }

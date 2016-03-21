@@ -11,7 +11,7 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 /**
  * 企业信息表维护Entity
  * @author hechungui
- * @version 2016-02-25
+ * @version 2016-03-19
  */
 public class CompanyInfo extends DataEntity<CompanyInfo> {
 	
@@ -27,6 +27,7 @@ public class CompanyInfo extends DataEntity<CompanyInfo> {
 	private String area;		// 厂地面积
 	private String cytype;		// 产业类别
 	private String picture;		// 照片
+	private String orgId;		// 组织ID
 	private Double lon;		// 经度
 	private Double lat;		// 纬度
 	
@@ -38,7 +39,7 @@ public class CompanyInfo extends DataEntity<CompanyInfo> {
 		super(id);
 	}
 
-	//@NotNull(message="企业ID不能为空")
+	@NotNull(message="企业ID不能为空")
 	public Integer getQid() {
 		return qid;
 	}
@@ -56,7 +57,7 @@ public class CompanyInfo extends DataEntity<CompanyInfo> {
 		this.qname = qname;
 	}
 	
-	@Length(min=1, max=200, message="地址长度必须介于 1 和 200 之间")
+	@Length(min=0, max=200, message="地址长度必须介于 0 和 200 之间")
 	public String getQaddress() {
 		return qaddress;
 	}
@@ -65,7 +66,7 @@ public class CompanyInfo extends DataEntity<CompanyInfo> {
 		this.qaddress = qaddress;
 	}
 	
-	@Length(min=1, max=100, message="营业范围长度必须介于 1 和 100 之间")
+	@Length(min=0, max=100, message="营业范围长度必须介于 0 和 100 之间")
 	public String getQscope() {
 		return qscope;
 	}
@@ -74,7 +75,7 @@ public class CompanyInfo extends DataEntity<CompanyInfo> {
 		this.qscope = qscope;
 	}
 	
-	@Length(min=1, max=100, message="主要产品长度必须介于 1 和 100 之间")
+	@Length(min=0, max=100, message="主要产品长度必须介于 0 和 100 之间")
 	public String getProduct() {
 		return product;
 	}
@@ -83,7 +84,7 @@ public class CompanyInfo extends DataEntity<CompanyInfo> {
 		this.product = product;
 	}
 	
-	@Length(min=1, max=50, message="联系电话长度必须介于 1 和 50 之间")
+	@Length(min=0, max=50, message="联系电话长度必须介于 0 和 50 之间")
 	public String getTel() {
 		return tel;
 	}
@@ -92,7 +93,7 @@ public class CompanyInfo extends DataEntity<CompanyInfo> {
 		this.tel = tel;
 	}
 	
-	@Length(min=1, max=50, message="规模长度必须介于 1 和 50 之间")
+	@Length(min=0, max=50, message="规模长度必须介于 0 和 50 之间")
 	public String getQgm() {
 		return qgm;
 	}
@@ -101,7 +102,7 @@ public class CompanyInfo extends DataEntity<CompanyInfo> {
 		this.qgm = qgm;
 	}
 	
-	@Length(min=1, max=45, message="用工情况长度必须介于 1 和 45 之间")
+	@Length(min=0, max=45, message="用工情况长度必须介于 0 和 45 之间")
 	public String getPeople() {
 		return people;
 	}
@@ -110,7 +111,7 @@ public class CompanyInfo extends DataEntity<CompanyInfo> {
 		this.people = people;
 	}
 	
-	@Length(min=1, max=50, message="厂地面积长度必须介于 1 和 50 之间")
+	@Length(min=0, max=50, message="厂地面积长度必须介于 0 和 50 之间")
 	public String getArea() {
 		return area;
 	}
@@ -119,7 +120,7 @@ public class CompanyInfo extends DataEntity<CompanyInfo> {
 		this.area = area;
 	}
 	
-	@Length(min=1, max=45, message="产业类别长度必须介于 1 和 45 之间")
+	@Length(min=0, max=45, message="产业类别长度必须介于 0 和 45 之间")
 	public String getCytype() {
 		return cytype;
 	}
@@ -128,7 +129,7 @@ public class CompanyInfo extends DataEntity<CompanyInfo> {
 		this.cytype = cytype;
 	}
 	
-	@Length(min=1, max=100, message="照片长度必须介于 1 和 100 之间")
+	@Length(min=0, max=100, message="照片长度必须介于 0 和 100 之间")
 	public String getPicture() {
 		return picture;
 	}
@@ -137,7 +138,15 @@ public class CompanyInfo extends DataEntity<CompanyInfo> {
 		this.picture = picture;
 	}
 	
-	//@NotNull(message="经度不能为空")
+	@Length(min=0, max=255, message="组织ID长度必须介于 0 和 255 之间")
+	public String getOrgId() {
+		return orgId;
+	}
+
+	public void setOrgId(String orgId) {
+		this.orgId = orgId;
+	}
+	
 	public Double getLon() {
 		return lon;
 	}
@@ -146,7 +155,6 @@ public class CompanyInfo extends DataEntity<CompanyInfo> {
 		this.lon = lon;
 	}
 	
-	//@NotNull(message="纬度不能为空")
 	public Double getLat() {
 		return lat;
 	}

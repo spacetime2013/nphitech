@@ -28,11 +28,18 @@
 <body>
 	<ul class="nav nav-tabs">
 		<li><a href="${ctx}/business/companyInfo/">企业信息列表</a></li>
-		<li class="active"><a href="${ctx}/business/companyInfo/form?id=${companyInfo.qid}">企业信息<shiro:hasPermission name="business:companyInfo:edit">${not empty companyInfo.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="business:companyInfo:edit">查看</shiro:lacksPermission></a></li>
+		<li class="active"><a href="${ctx}/business/companyInfo/form?id=${companyInfo.id}">企业信息<shiro:hasPermission name="business:companyInfo:edit">${not empty companyInfo.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="business:companyInfo:edit">查看</shiro:lacksPermission></a></li>
 	</ul><br/>
 	<form:form id="inputForm" modelAttribute="companyInfo" action="${ctx}/business/companyInfo/save" method="post" class="form-horizontal">
 		<form:hidden path="id"/>
-		<sys:message content="${message}"/>		
+		<sys:message content="${message}"/>	
+		<div class="control-group">
+			<label class="control-label">企业ID：</label>
+			<div class="controls">
+				<form:input path="qid" htmlEscape="false" maxlength="45" class="input-xlarge required"/>
+				<span class="help-inline"><font color="red">*</font> </span>
+			</div>
+		</div>	
 		<div class="control-group">
 			<label class="control-label">企业名称：</label>
 			<div class="controls">
@@ -43,72 +50,64 @@
 		<div class="control-group">
 			<label class="control-label">地址：</label>
 			<div class="controls">
-				<form:input path="qaddress" htmlEscape="false" maxlength="200" class="input-xlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:input path="qaddress" htmlEscape="false" maxlength="200" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">营业范围：</label>
 			<div class="controls">
-				<form:input path="qscope" htmlEscape="false" maxlength="100" class="input-xlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:input path="qscope" htmlEscape="false" maxlength="100" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">主要产品：</label>
 			<div class="controls">
-				<form:select path="product" class="input-xlarge required">
+				<form:select path="product" class="input-xlarge ">
 					<form:option value="" label=""/>
 					<form:options items="${fns:getDictList('comp_product')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
 				</form:select>
-				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">联系电话：</label>
 			<div class="controls">
-				<form:input path="tel" htmlEscape="false" maxlength="50" class="input-xlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:input path="tel" htmlEscape="false" maxlength="50" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">规模：</label>
 			<div class="controls">
-				<form:select path="qgm" class="input-xlarge required">
+				<form:select path="qgm" class="input-xlarge ">
 					<form:option value="" label=""/>
 					<form:options items="${fns:getDictList('comp_gm')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
 				</form:select>
-				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">用工情况：</label>
 			<div class="controls">
-				<form:select path="people" class="input-xlarge required">
+				<form:select path="people" class="input-xlarge ">
 					<form:option value="" label=""/>
 					<form:options items="${fns:getDictList('comp_people')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
 				</form:select>
-				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">厂地面积：</label>
 			<div class="controls">
-				<form:select path="area" class="input-xlarge required">
+				<form:select path="area" class="input-xlarge ">
 					<form:option value="" label=""/>
 					<form:options items="${fns:getDictList('comp_area')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
 				</form:select>
-				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">产业类别：</label>
 			<div class="controls">
-				<form:select path="cytype" class="input-xlarge required">
+				<form:select path="cytype" class="input-xlarge ">
 					<form:option value="" label=""/>
 					<form:options items="${fns:getDictList('comp_cytype')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
 				</form:select>
-				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
@@ -116,21 +115,30 @@
 			<div class="controls">
 				<form:hidden id="picture" path="picture" htmlEscape="false" maxlength="100" class="input-xlarge"/>
 				<sys:ckfinder input="picture" type="files" uploadPath="/business/companyInfo" selectMultiple="true"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">组织ID：</label>
+			<div class="controls">
+				<form:input path="orgId" htmlEscape="false" maxlength="255" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">经度：</label>
 			<div class="controls">
-				<form:input path="lon" htmlEscape="false" class="input-xlarge required number"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:input path="lon" htmlEscape="false" class="input-xlarge  number"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">纬度：</label>
 			<div class="controls">
-				<form:input path="lat" htmlEscape="false" class="input-xlarge required number"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:input path="lat" htmlEscape="false" class="input-xlarge  number"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">备注：</label>
+			<div class="controls">
+				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge "/>
 			</div>
 		</div>
 		<div class="form-actions">

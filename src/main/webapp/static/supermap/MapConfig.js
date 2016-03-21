@@ -23,5 +23,9 @@ SuperMap.MapConfig.MapServer = {
  */
 SuperMap.MapConfig.LayerNames = {
     baseLayer: "底图",
-    panoramaLayer: "企业分布图"
+    panoramaLayer: "企业分布图",
+    drawFeatureLayer: "标绘图层",
+    labelLayer: "标签图层",
+    markerLayer: "查询图层",
+    vectorLayer: "企业分布图层"
 };

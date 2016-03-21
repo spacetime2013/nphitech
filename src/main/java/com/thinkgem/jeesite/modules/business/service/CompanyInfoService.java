@@ -16,7 +16,7 @@ import com.thinkgem.jeesite.modules.business.dao.CompanyInfoDao;
 /**
  * 企业信息表维护Service
  * @author hechungui
- * @version 2016-02-25
+ * @version 2016-03-19
  */
 @Service
 @Transactional(readOnly = true)

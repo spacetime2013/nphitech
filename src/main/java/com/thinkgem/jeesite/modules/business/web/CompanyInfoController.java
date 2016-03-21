@@ -3,6 +3,8 @@
  */
 package com.thinkgem.jeesite.modules.business.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.thinkgem.jeesite.common.config.Global;
@@ -25,7 +28,7 @@ import com.thinkgem.jeesite.modules.business.service.CompanyInfoService;
 /**
  * 企业信息表维护Controller
  * @author hechungui
- * @version 2016-02-25
+ * @version 2016-03-19
  */
 @Controller
 @RequestMapping(value = "${adminPath}/business/companyInfo")
@@ -52,6 +55,14 @@ public class CompanyInfoController extends BaseController {
 		Page<CompanyInfo> page = companyInfoService.findPage(new Page<CompanyInfo>(request, response), companyInfo); 
 		model.addAttribute("page", page);
 		return "modules/business/companyInfoList";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "json")
+	public List<CompanyInfo> json(CompanyInfo companyInfo, HttpServletRequest request, HttpServletResponse response, Model model) {
+		response.setContentType("application/json; charset=UTF-8");
+		List<CompanyInfo> list = companyInfoService.findList(companyInfo);
+		return list;
 	}
 
 	@RequiresPermissions("business:companyInfo:view")

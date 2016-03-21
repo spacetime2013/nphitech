@@ -14,8 +14,15 @@
 		a.area AS "area",
 		a.cytype AS "cytype",
 		a.picture AS "picture",
+		a.org_id AS "orgId",
 		a.lon AS "lon",
-		a.lat AS "lat"
+		a.lat AS "lat",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.remarks AS "remarks",
+		a.del_flag AS "delFlag"
 	</sql>
 	
 	<sql id="companyInfoJoins">
@@ -35,7 +42,7 @@
 		FROM sys_companyinfo a
 		<include refid="companyInfoJoins"/>
 		<where>
-			
+			a.del_flag = #{DEL_FLAG_NORMAL}
 			<if test="qname != null and qname != ''">
 				AND a.qname LIKE 
 					<if test="dbName == 'oracle'">'%'||#{qname}||'%'</if>
@@ -49,7 +56,10 @@
 					<if test="dbName == 'mysql'">concat('%',#{qaddress},'%')</if>
 			</if>
 			<if test="qscope != null and qscope != ''">
-				AND a.qscope = #{qscope}
+				AND a.qscope LIKE
+					<if test="dbName == 'oracle'">'%'||#{qscope}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{qscope}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{qscope},'%')</if>
 			</if>
 			<if test="product != null and product != ''">
 				AND a.product = #{product}
@@ -72,6 +82,7 @@
 				ORDER BY ${page.orderBy}
 			</when>
 			<otherwise>
+				ORDER BY a.update_date DESC
 			</otherwise>
 		</choose>
 	</select>
@@ -82,13 +93,14 @@
 		FROM sys_companyinfo a
 		<include refid="companyInfoJoins"/>
 		<where>
-			
+			a.del_flag = #{DEL_FLAG_NORMAL}
 		</where>		
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
 				ORDER BY ${page.orderBy}
 			</when>
 			<otherwise>
+				ORDER BY a.update_date DESC
 			</otherwise>
 		</choose>
 	</select>
@@ -105,8 +117,15 @@
 			area,
 			cytype,
 			picture,
+			org_id,
 			lon,
-			lat
+			lat,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			remarks,
+			del_flag
 		) VALUES (
 			#{qname},
 			#{qaddress},
@@ -118,8 +137,15 @@
 			#{area},
 			#{cytype},
 			#{picture},
+			#{orgId},
 			#{lon},
-			#{lat}
+			#{lat},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{remarks},
+			#{delFlag}
 		)
 	</insert>
 	
@@ -135,13 +161,18 @@
 			area = #{area},
 			cytype = #{cytype},
 			picture = #{picture},
+			org_id = #{orgId},
 			lon = #{lon},
-			lat = #{lat}
+			lat = #{lat},
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			remarks = #{remarks}
 		WHERE qid = #{id}
 	</update>
 	
 	<update id="delete">
-		DELETE FROM sys_companyinfo
+		UPDATE sys_companyinfo SET 
+			del_flag = #{DEL_FLAG_DELETE}
 		WHERE qid = #{id}
 	</update>
 	

@@ -10,7 +10,7 @@ import com.thinkgem.jeesite.modules.business.entity.CompanyInfo;
 /**
  * 企业信息表维护DAO接口
  * @author hechungui
- * @version 2016-02-25
+ * @version 2016-03-19
  */
 @MyBatisDao
 public interface CompanyInfoDao extends CrudDao<CompanyInfo> {
